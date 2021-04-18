@@ -1,6 +1,6 @@
 # First Align, then Predict: Understanding the Cross-Lingual Ability of Multilingual BERT 
 
-This repository includes pointers and scripts to reproduce experiments presented in our paper [First Align, then Predict: Understanding the Cross-Lingual Ability of Multilingual BERT](https://arxiv.org/abs/2101.11109) accepted at [EACL 2021](https://2021.eacl.org/)
+This repository includes pointers and scripts to reproduce the experiments presented in our paper [First Align, then Predict: Understanding the Cross-Lingual Ability of Multilingual BERT](https://arxiv.org/abs/2101.11109) accepted at [EACL 2021](https://2021.eacl.org/)
 
 
 ## Setting up 
@@ -13,7 +13,7 @@ This repository includes pointers and scripts to reproduce experiments presented
 
 ## Computing Cross-Lingual Similarity  
 
-We measure mBERT's hidden representation similarity between source and target languages with the Central Kernel Alignment metric or [CKA](https://arxiv.org/abs/1905.00414) 
+We measure mBERT's hidden representation similarity between source and target languages with the [Central Kernel Alignment metric (CKA)](https://arxiv.org/abs/1905.00414) 
 
 ### Downloading parallel data
 
@@ -29,23 +29,23 @@ After uncompressing them, we can use the `./{lang_src}-ud-test.conllu` and `./{l
 ### Computing Cross-Lingual Similarity with the CKA metric 
 
 
-````
+```
 python ./measure_similarity.py \
 --data_dir ./data/ \                # location of parrallel data in the source and target languages
 --source_lang_dataset en_pud \      # prefix of the dataset name of the source language
 --target_lang_list fr_pud de_pud \  # list of prefix of the dataset name of the source language
 --dataset_suffix ' -ud-test.conllu'\# suffix of the dataset names (should be the same for all source and target languages e.g. en_pud-ud-test.conllu )
---line_filter '# text =' \          #  
+--line_filter '# text =' \          # if we work with conllu files, we filter in only the raw sentences starting with '# text =' 
 --report_dir ./  \                  # directory where a json file will be stored with the similarity metric
 --n_sent_total 100 \                # how many parrallel sentences picked from each file (it will sample the n_sent_total top sentences)
 ```
 
-It will printout and write in report_dir the CKA score between the source language and each target language for each layer hidden layer of mBERT. 
+This script will printout and write in report_dir the CKA score between the source language and each target language for each layer hidden layer of mBERT. 
 
 
 NB: 
 - We assume that each dataset will follow the template: args.data_dir/{dataset_name}{dataset_suffix}
-- To measure similarity , the data between the source and the target languages should be aligned at the sentence level. 
+- To measure the similarity , the dataset between the source and the target languages should be aligned at the sentence level (for instance `en_pud-ud-test.conllu` and `de_pud-ud-test.conllu` are aligned). 
 
 
  
