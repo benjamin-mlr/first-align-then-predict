@@ -35,7 +35,7 @@ python ./measure_similarity.py \
 --source_lang_dataset en_pud \      # prefix of the dataset name of the source language
 --target_lang_list fr_pud de_pud \  # list of prefix of the dataset name of the source language
 --dataset_suffix ' -ud-test.conllu'\# suffix of the dataset names (should be the same for all source and target languages e.g. en_pud-ud-test.conllu )
---line_filter '# text =' \          # if we work with conllu files, we filter in only the raw sentences starting with '# text =' 
+--line_filter '# text =' \          # if we work with conllu files, we filter-in only the raw sentences starting with '# text =' 
 --report_dir ./  \                  # directory where a json file will be stored with the similarity metric
 --n_sent_total 100 \                # how many parrallel sentences picked from each file (it will sample the n_sent_total top sentences)
 ```
