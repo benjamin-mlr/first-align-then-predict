@@ -60,8 +60,6 @@ if __name__ == "__main__":
         batch_size = 1
     elif metric == "cka":
         # cka is computed on batch of samples , we split the dataset in 4 to get the batch size
-        import pdb
-        pdb.set_trace()
         batch_size = len(data_src) // 4
     else:
         raise(Exception(f"{metric} not supported"))
