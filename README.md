@@ -11,10 +11,6 @@ This repository includes pointers and scripts to reproduce the experiments prese
 
 `conda activate align-then-predict` 
 
-## RANDOM-INIT of transformers BERT-like models
-
-Go to this [repository](https://github.com/benjamin-mlr/first-align-then-predict-w-RANDOM-INIT)
-
 ## Computing Cross-Lingual Similarity  
 
 We measure mBERT's hidden representation similarity between source and target languages with the [Central Kernel Alignment metric (CKA)](https://arxiv.org/abs/1905.00414) 
@@ -52,26 +48,10 @@ NB:
 - To measure the similarity , the dataset between the source and the target languages should be aligned at the sentence level (for instance `en_pud-ud-test.conllu` and `de_pud-ud-test.conllu` are aligned). 
 
 
-## RANDOM-INIT
 
-Random-init now supports a more recent version of transformers
+## RANDOM-INIT 
 
-`pip install transformers==4.10.2`  
-
-You can use random-init by importing BertModel from random_init.modeling_bert_random_init instead of the original transformers library. 
-  
-Then, to use random-init, simply add the `random_init_layers` argument to the `from_pretrained()` method: 
-
- 
-Example: Applying random-init to mBERT layer 0 and 1
-
-```
-from random_init.modeling_bert_random_init import BertForTokenClassification
-mbert_w_random_init = BertForTokenClassification.from_pretrained("bert-base-multilingual-cased", 
-                                                                  random_init_layers=['bert.encoder.layer.[0-1]{1}.attention.*', 'bert.encoder.layer.[0-1]{1}.output.*', 'bert.encoder.layer.[0-
-                                                                  15]{1}.intermediate.*'])
-```
-
+Go to this [repository](https://github.com/benjamin-mlr/first-align-then-predict-w-RANDOM-INIT)
 
 
 # How to cite 
