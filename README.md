@@ -13,7 +13,7 @@ This repository includes pointers and scripts to reproduce the experiments prese
 
 ## RANDOM-INIT of transformers BERT-like models
 
-go to this [repository](https://github.com/benjamin-mlr/first-align-then-predict-w-RANDOM-INIT)
+Go to this [repository](https://github.com/benjamin-mlr/first-align-then-predict-w-RANDOM-INIT)
 
 ## Computing Cross-Lingual Similarity  
 
